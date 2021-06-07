@@ -1,0 +1,15 @@
+.header__title{
+  text-align: center;
+}
+
+.form{
+  text-align: center;
+}
+.form__input{
+  margin: 5px 5px;
+}
+.form__btn{
+  display: block;
+  margin: 10px auto;
+  width: 100px;
+}
