@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { auth, store } from '../firebaseconfig';
+import '../styles/List.css'
 
 const List = ({ list, getTask, setList }) => {
 
@@ -21,10 +22,9 @@ const List = ({ list, getTask, setList }) => {
 
   return (
     <Fragment>
-      <li>Soy el componente lista</li>
       {
         list.length !== 0 ?
-          (list.map(item => <li key={item.id}>{item.name} --- {item.number}
+          (list.map(item => <li className="list" key={item.id}>{item.name} --- {item.number}
             <button onClick={() => delUser(item.id)}>Borrar</button>
           </li> ))
           :

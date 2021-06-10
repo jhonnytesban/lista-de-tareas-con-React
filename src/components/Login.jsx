@@ -47,9 +47,9 @@ const Login = () => {
       <header className='header'>
         <h1 className="header__title">Login</h1>
       </header>
-      <form className="form">
+      <form className="login">
         <input
-          className="form__input"
+          className="login__input"
           type="email"
           name="email"
           value={login.email}
@@ -57,7 +57,7 @@ const Login = () => {
           onChange={handleChange}
         />
         <input
-          className="form__input"
+          className="login__input"
           type="password"
           name="password"
           value={login.password}
@@ -65,8 +65,8 @@ const Login = () => {
           onChange={handleChange}
         />
       </form>
-      <input className="form__btn" type="button" value="Iniciar" onClick={logIn}/>
-      <input className="form__btn" type="button" value="Registrarse" onClick={registerUser}/>
+      <input className="login__btn" type="button" value="Iniciar" onClick={logIn}/>
+      <input className="login__btn" type="button" value="Registrarse" onClick={registerUser}/>
     </Fragment>
   );
 };

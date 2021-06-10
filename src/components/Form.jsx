@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { auth, store } from "../firebaseconfig";
 import List from "./List";
+import '../styles/Form.css'
 
 const Form = () => {
   const [form, setForm] = useState({ name: "", number: "" });
@@ -57,9 +58,9 @@ const Form = () => {
 
   return (
     <Fragment>
-      <h2>Formulario</h2>
+      <h2 className="form__title">Formulario</h2>
       <button onClick={closeSesion}>Cerrar sesión</button>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Escribe el nombre"

@@ -2,13 +2,13 @@
   text-align: center;
 }
 
-.form{
+.login{
   text-align: center;
 }
-.form__input{
+.login__input{
   margin: 5px 5px;
 }
-.form__btn{
+.login__btn{
   display: block;
   margin: 10px auto;
   width: 100px;
