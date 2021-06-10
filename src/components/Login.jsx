@@ -65,7 +65,7 @@ const Login = () => {
               onChange={handleChange}
             />
           </form>
-          <input className="login__btn" type="button" value="Iniciar" onClick={logIn}/>
+          <input className="login__btn" type="button" value="Iniciar Sesión" onClick={logIn}/>
           <input className="login__btn" type="button" value="Registrarse" onClick={registerUser}/>
         </header>
       </div>

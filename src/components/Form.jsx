@@ -26,14 +26,16 @@ const Form = () => {
     const unSubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUsuario(user.uid);
+      }else {
+        history.push('/')
+        auth.signOut()
       }
     });
     return () => {
       unSubscribe();
-      auth.signOut();
       setUsuario(null);
     };
-  }, []);
+  }, [history]);
 
   const handleChange = (e) => {
     setForm({
@@ -57,7 +59,7 @@ const Form = () => {
 
   return (
     <Fragment>
-      <h2 className="form__title">Formulario</h2>
+      <h2 className="form__title">Agenda personal</h2>
       <button onClick={closeSesion}>Cerrar sesión</button>
       <form className="form" onSubmit={handleSubmit}>
         <input
@@ -74,7 +76,7 @@ const Form = () => {
           name="task"
           value={form.task}
         />
-        <input type="submit" value="Guardar" />
+        <input type="submit" value="Guardar Tarea" />
       </form>
       <ul>
         {usuario === null ? (
