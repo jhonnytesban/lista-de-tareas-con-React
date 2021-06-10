@@ -5,7 +5,7 @@ import List from "./List";
 import '../styles/Form.css'
 
 const Form = () => {
-  const [form, setForm] = useState({ name: "", number: "" });
+  const [form, setForm] = useState({ name: "", task: "" });
   const [list, setList] = useState([]);
   const [usuario, setUsuario] = useState(null);
 
@@ -16,7 +16,7 @@ const Form = () => {
     history.push("/");
   };
 
-  const getTask = async (user) => {
+  const getTask = async () => {
     const { docs } = await store.collection(usuario).get();
     const newArray = docs.map((item) => ({ id: item.id, ...item.data() }));
     setList(newArray);
@@ -45,13 +45,12 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.name.trim() || !form.number.trim()) {
+    if (!form.name.trim() || !form.task.trim()) {
       alert("Los campos están vacíos");
     } else {
-          store.collection(usuario).add(form);
-          getTask();
-          setForm({ name: "", number: "" });
-          console.log(usuario);
+      store.collection(usuario).add(form);
+      getTask();
+      setForm({ name: "", task: "" });
         
     }
   };
@@ -63,17 +62,17 @@ const Form = () => {
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Escribe el nombre"
+          placeholder="Escribe el título de la tarea"
           onChange={handleChange}
           name="name"
           value={form.name}
         />
         <input
-          type="number"
-          placeholder="Esctibe el número"
+          type="text"
+          placeholder="Esctibe la descripción"
           onChange={handleChange}
-          name="number"
-          value={form.number}
+          name="task"
+          value={form.task}
         />
         <input type="submit" value="Guardar" />
       </form>
@@ -85,6 +84,7 @@ const Form = () => {
             setList={setList}
             list={list}
             getTask={getTask}
+            usuario={usuario}
           />
         )}
       </ul>

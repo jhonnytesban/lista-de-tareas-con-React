@@ -1,16 +1,12 @@
 import React, { Fragment, useEffect } from 'react';
-import { auth, store } from '../firebaseconfig';
+import { store } from '../firebaseconfig';
 import '../styles/List.css'
 
-const List = ({ list, getTask, setList }) => {
+const List = ({ list, getTask, setList, usuario }) => {
 
   const delUser = (id) => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        store.collection(user.uid).doc(id).delete();
-        getTask(user.uid);
-      }
-    });
+    store.collection(usuario).doc(id).delete();
+    getTask();
   };
 
   useEffect(() => {
@@ -24,7 +20,7 @@ const List = ({ list, getTask, setList }) => {
     <Fragment>
       {
         list.length !== 0 ?
-          (list.map(item => <li className="list" key={item.id}>{item.name} --- {item.number}
+          (list.map(item => <li className="list" key={item.id}>{item.name} --- {item.task}
             <button onClick={() => delUser(item.id)}>Borrar</button>
           </li> ))
           :
