@@ -1,13 +1,31 @@
+.container{
+  background: linear-gradient(to right, #5f2c82, #49a09d);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header{
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 5px 5px 5px 5px rgba(49, 49, 49, 0.5);
+  padding: 20px;
+}
 .header__title{
   text-align: center;
+  margin: 0;
+  color: #fff;
 }
-
 .login{
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.login__input{
+/* .login__input{
   margin: 5px 5px;
-}
+} */
 .login__btn{
   display: block;
   margin: 10px auto;

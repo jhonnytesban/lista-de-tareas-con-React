@@ -44,29 +44,31 @@ const Login = () => {
 
   return (
     <Fragment>
-      <header className='header'>
-        <h1 className="header__title">Login</h1>
-      </header>
-      <form className="login">
-        <input
-          className="login__input"
-          type="email"
-          name="email"
-          value={login.email}
-          placeholder="Escribe el email"
-          onChange={handleChange}
-        />
-        <input
-          className="login__input"
-          type="password"
-          name="password"
-          value={login.password}
-          placeholder="Escribe la contraseña"
-          onChange={handleChange}
-        />
-      </form>
-      <input className="login__btn" type="button" value="Iniciar" onClick={logIn}/>
-      <input className="login__btn" type="button" value="Registrarse" onClick={registerUser}/>
+      <div className="container">
+        <header className='header'>
+          <h1 className="header__title">Login</h1>
+          <form className="login">
+            <input
+              className="login__input"
+              type="email"
+              name="email"
+              value={login.email}
+              placeholder="Escribe el email"
+              onChange={handleChange}
+            />
+            <input
+              className="login__input"
+              type="password"
+              name="password"
+              value={login.password}
+              placeholder="Escribe la contraseña"
+              onChange={handleChange}
+            />
+          </form>
+          <input className="login__btn" type="button" value="Iniciar" onClick={logIn}/>
+          <input className="login__btn" type="button" value="Registrarse" onClick={registerUser}/>
+        </header>
+      </div>
     </Fragment>
   );
 };
