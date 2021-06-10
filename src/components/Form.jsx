@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { auth, store } from "../firebaseconfig";
 import List from "./List";
-import '../styles/Form.css'
+import "../styles/Form.css";
 
 const Form = () => {
   const [form, setForm] = useState({ name: "", task: "" });
@@ -26,9 +26,9 @@ const Form = () => {
     const unSubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUsuario(user.uid);
-      }else {
-        history.push('/')
-        auth.signOut()
+      } else {
+        history.push("/");
+        auth.signOut();
       }
     });
     return () => {
@@ -53,44 +53,47 @@ const Form = () => {
       store.collection(usuario).add(form);
       getTask();
       setForm({ name: "", task: "" });
-        
     }
   };
 
   return (
-    <Fragment>
-      <h2 className="form__title">Agenda personal</h2>
-      <button onClick={closeSesion}>Cerrar sesión</button>
-      <form className="form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Escribe el título de la tarea"
-          onChange={handleChange}
-          name="name"
-          value={form.name}
-        />
-        <input
-          type="text"
-          placeholder="Esctibe la descripción"
-          onChange={handleChange}
-          name="task"
-          value={form.task}
-        />
-        <input type="submit" value="Guardar Tarea" />
-      </form>
-      <ul>
-        {usuario === null ? (
-          <li>No hay usuario</li>
-        ) : (
-          <List
-            setList={setList}
-            list={list}
-            getTask={getTask}
-            usuario={usuario}
+    <div className="container-component">
+      <div className="container-form">
+        <button onClick={closeSesion}>Cerrar sesión</button>
+        <h2 className="form__title">Agenda personal</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Escribe el título de la tarea"
+            onChange={handleChange}
+            name="name"
+            value={form.name}
           />
-        )}
-      </ul>
-    </Fragment>
+          <input
+            type="text"
+            placeholder="Esctibe la descripción"
+            onChange={handleChange}
+            name="task"
+            value={form.task}
+          />
+          <input type="submit" value="Guardar Tarea" />
+        </form>
+      </div>
+      <div className="container-list">
+        <ul>
+          {usuario === null ? (
+            <li>No hay usuario</li>
+          ) : (
+            <List
+              setList={setList}
+              list={list}
+              getTask={getTask}
+              usuario={usuario}
+            />
+          )}
+        </ul>
+      </div>
+    </div>
   );
 };
 
